@@ -8,10 +8,12 @@
 #include <QTextStream>
 #include <QRandomGenerator>
 
+
 #define PATH_TO_SETTINGS "/home/yuichi/CppVocabQt/settings/settings.json"
-#define PATH_TO_DB0 "home/yuichi/CppVocabQt/db/db0.csv"
-#define PATH_TO_DB1 "home/yuichi/CppVocabQt/db/db1.csv"
-#define PATH_TO_DB2 "home/yuichi/CppVocabQt/db/db2.csv"
+#define PATH_TO_DB0 "/home/yuichi/CppVocabQt/db/db0.csv"
+#define PATH_TO_DB1 "/home/yuichi/CppVocabQt/db/db1.csv"
+#define PATH_TO_DB2 "/home/yuichi/CppVocabQt/db/db2.csv"
+#define PATH_TO_LEARNED_DB "/home/yuichi/CppVocabQt/db/learnedDB.csv"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

@@ -35,6 +35,7 @@ int MainWindow::getLinesCount(QString &pathToCurrentDB) {
     int linesCount = 0;
 
     QFile loadFile(pathToCurrentDB);
+    qDebug() << pathToCurrentDB;
     loadFile.open(QIODevice::ReadOnly);
     if (!loadFile.isOpen()) {
         qWarning("Failed to open DB file");
@@ -68,12 +69,44 @@ void MainWindow::on_buttonNext_clicked()
     }
 
     int linesCount = getLinesCount(pathToCurrentDB);
+    if (linesCount == 0) {
+        ui->labelWord->setText("Gongrats!!");
+        ui->labelDescription->setText("No more words for you");
+        return;
+    }
 
     int randLine = QRandomGenerator::global()->bounded(0, linesCount);
 
-    // display
-    // delete x line
-    // add to learned words
+    int lineIndex = 0;
+    QFile loadFile(pathToCurrentDB);
+    loadFile.open(QIODevice::ReadWrite);
 
+    QTextStream textStream(&loadFile);
+
+    QString newFileDB;
+    while(!textStream.atEnd()) {
+        if (QString line = textStream.readLine(); lineIndex == randLine) {
+            auto parts = line.split(',');
+            ui->labelWord->setText(parts[0]);
+            ui->labelDescription->setText(parts[1]);
+
+            QFile loadLearnedDBFile(PATH_TO_LEARNED_DB);
+            loadLearnedDBFile.open(QIODevice::WriteOnly | QIODevice::Append);
+            if (!loadLearnedDBFile.isOpen()) {
+                qWarning("Failed to open learned words db");
+                exit(EXIT_FAILURE);
+            }
+            QTextStream textStreamLearned(&loadLearnedDBFile);
+
+            textStreamLearned << line << "\n";
+            loadLearnedDBFile.close();
+        } else {
+            newFileDB += line += "\n";
+        }
+
+        lineIndex += 1;
+    }
+    loadFile.resize(0);
+    textStream << newFileDB;
 }
 
