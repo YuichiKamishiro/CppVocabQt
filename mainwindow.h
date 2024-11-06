@@ -7,7 +7,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QRandomGenerator>
-
+#include <QFontDatabase>
 
 #define PATH_TO_SETTINGS "/home/yuichi/CppVocabQt/settings/settings.json"
 #define PATH_TO_DB0 "/home/yuichi/CppVocabQt/db/db0.csv"
@@ -34,9 +34,11 @@ public:
 private slots:
     void on_buttonNext_clicked();
 
+    void on_comboBoxSettings_currentIndexChanged(int index);
+
 private:
 
     Ui::MainWindow *ui;
-    int indexDifficulty = -1;
+    int indexDifficulty = 0;
 };
 #endif // MAINWINDOW_H

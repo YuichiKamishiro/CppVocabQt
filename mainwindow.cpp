@@ -24,6 +24,17 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     ui->comboBoxSettings->setCurrentIndex(indexDifficulty);
+
+    QFontDatabase::addApplicationFont(":/resources/fonts/Rocklime.otf");
+
+    QFont defaultFont("Rocklime", 14);
+    QFont labelDefaultFont("Rocklime", 24);
+    QMainWindow::setFont(defaultFont);
+
+    ui->labelDescription->setFont(labelDefaultFont);
+    ui->labelWord->setFont(labelDefaultFont);
+
+    //this->setStyleSheet("background-image: url(:/resources/backgrounds/background1.jpg);");
 }
 
 MainWindow::~MainWindow()
@@ -67,7 +78,6 @@ void MainWindow::on_buttonNext_clicked()
             pathToCurrentDB = PATH_TO_DB2;
             break;
     }
-
     int linesCount = getLinesCount(pathToCurrentDB);
     if (linesCount == 0) {
         ui->labelWord->setText("Gongrats!!");
@@ -108,5 +118,11 @@ void MainWindow::on_buttonNext_clicked()
     }
     loadFile.resize(0);
     textStream << newFileDB;
+}
+
+
+void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
+{
+    indexDifficulty = index;
 }
 

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>fonts/Rocklime.otf</file>
+        <file>backgrounds/background1.jpg</file>
+    </qresource>
+</RCC>
