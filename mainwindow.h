@@ -8,6 +8,8 @@
 #include <QTextStream>
 #include <QRandomGenerator>
 #include <QFontDatabase>
+#include <QPixmap>
+#include <QPalette>
 
 #define PATH_TO_SETTINGS "/home/yuichi/CppVocabQt/settings/settings.json"
 #define PATH_TO_DB0 "/home/yuichi/CppVocabQt/db/db0.csv"

@@ -33,8 +33,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->labelDescription->setFont(labelDefaultFont);
     ui->labelWord->setFont(labelDefaultFont);
+    ui->labelDescription->setStyleSheet("color: white");
+    ui->labelWord->setStyleSheet("color: white");
 
-    //this->setStyleSheet("background-image: url(:/resources/backgrounds/background1.jpg);");
+    QPixmap qp(":/resources/backgrounds/background1.jpg");
+
+    QPalette palette;
+    palette.setBrush(QPalette::Window, qp);
+    this->setPalette(palette);
+    this->setAutoFillBackground(true);
 }
 
 MainWindow::~MainWindow()
