@@ -127,9 +127,6 @@ void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
 
 void MainWindow::on_buttonSettings_clicked()
 {
-    dialog->close();
-    dialog->setupUI();
-
-    dialog->show();
+    dialog->exec();
 }
 

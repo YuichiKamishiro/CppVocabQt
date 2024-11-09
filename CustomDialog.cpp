@@ -9,9 +9,11 @@ CustomDialog::CustomDialog(QWidget *parent, QMainWindow *window):
 
 {
     this->setFixedSize(400, 200);
+    setupUI();
 }
 
 void CustomDialog::setupUI() {
+
     comboBox->addItems({"Library", "Dark", "Light"});
     connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxIndexChanged(int)));
     layout->addWidget(label);
