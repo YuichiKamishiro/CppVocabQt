@@ -4,6 +4,7 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , dialog(new CustomDialog(parent))
 {
     ui->setupUi(this);
 
@@ -27,21 +28,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     QFontDatabase::addApplicationFont(":/resources/fonts/Rocklime.otf");
 
-    QFont defaultFont("Rocklime", 14);
-    QFont labelDefaultFont("Rocklime", 24);
-    QMainWindow::setFont(defaultFont);
+    // QPixmap qp(":/resources/backgrounds/background1.jpg");
+    // QPalette palette;
+    // palette.setBrush(QPalette::Window, qp);
+    // this->setPalette(palette);
 
-    ui->labelDescription->setFont(labelDefaultFont);
-    ui->labelWord->setFont(labelDefaultFont);
-    ui->labelDescription->setStyleSheet("color: white");
-    ui->labelWord->setStyleSheet("color: white");
-
-    QPixmap qp(":/resources/backgrounds/background1.jpg");
-
-    QPalette palette;
-    palette.setBrush(QPalette::Window, qp);
-    this->setPalette(palette);
-    this->setAutoFillBackground(true);
 }
 
 MainWindow::~MainWindow()
@@ -131,5 +122,14 @@ void MainWindow::on_buttonNext_clicked()
 void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
 {
     indexDifficulty = index;
+}
+
+
+void MainWindow::on_buttonSettings_clicked()
+{
+    dialog->close();
+    dialog->setupUI();
+
+    dialog->show();
 }
 

@@ -8,8 +8,9 @@
 #include <QTextStream>
 #include <QRandomGenerator>
 #include <QFontDatabase>
-#include <QPixmap>
-#include <QPalette>
+#include <QDialog>
+
+#include "CustomDialog.h"
 
 #define PATH_TO_SETTINGS "/home/yuichi/CppVocabQt/settings/settings.json"
 #define PATH_TO_DB0 "/home/yuichi/CppVocabQt/db/db0.csv"
@@ -38,9 +39,12 @@ private slots:
 
     void on_comboBoxSettings_currentIndexChanged(int index);
 
+    void on_buttonSettings_clicked();
+
 private:
 
     Ui::MainWindow *ui;
+    CustomDialog *dialog;
     int indexDifficulty = 0;
 };
 #endif // MAINWINDOW_H
