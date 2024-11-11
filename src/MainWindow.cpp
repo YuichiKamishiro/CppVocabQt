@@ -116,6 +116,35 @@ void MainWindow::on_buttonNext_clicked()
 void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
 {
     indexDifficulty = index;
+
+    // Getting Json
+    QFile loadFile(PATH_TO_SETTINGS);
+    loadFile.open(QIODevice::ReadOnly);
+    if (!loadFile.isOpen()) {
+        qWarning("Failed to open settings.json");
+        exit(EXIT_FAILURE);
+    }
+
+    QByteArray loadData = loadFile.readAll();
+    QJsonDocument loadDoc(QJsonDocument::fromJson(loadData));
+    QJsonObject jsonObj = loadDoc.object();
+
+    if(jsonObj.contains("difficulty")) {
+        jsonObj["difficulty"] = indexDifficulty;
+    }
+
+    // Writing Json
+    QFile writeFile(PATH_TO_SETTINGS);
+    writeFile.open(QIODevice::WriteOnly);
+    if (!writeFile.isOpen()) {
+        qWarning("Failed to open settings.json");
+        exit(EXIT_FAILURE);
+    }
+
+    QJsonDocument newDoc(jsonObj);
+    QByteArray newBytes = newDoc.toJson(QJsonDocument::Indented);
+
+    writeFile.write(newBytes);
 }
 
 
