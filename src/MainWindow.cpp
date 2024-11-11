@@ -1,10 +1,10 @@
-#include "mainwindow.h"
-#include "./ui_mainwindow.h"
+#include "MainWindow.h"
+#include "../ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , dialog(new CustomDialog(parent))
+    , dialog(new CustomDialog(parent, this))
 {
     ui->setupUi(this);
 
@@ -27,12 +27,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->comboBoxSettings->setCurrentIndex(indexDifficulty);
 
     QFontDatabase::addApplicationFont(":/resources/fonts/Rocklime.otf");
-
-    // QPixmap qp(":/resources/backgrounds/background1.jpg");
-    // QPalette palette;
-    // palette.setBrush(QPalette::Window, qp);
-    // this->setPalette(palette);
-
 }
 
 MainWindow::~MainWindow()

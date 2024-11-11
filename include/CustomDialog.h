@@ -12,7 +12,6 @@ class CustomDialog : public QDialog {
 
 public:
     explicit CustomDialog(QWidget *parent = nullptr, QMainWindow *window = nullptr);
-    void setupUI();
 
 private:
     QLabel *label;

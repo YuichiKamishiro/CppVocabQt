@@ -9,11 +9,6 @@ CustomDialog::CustomDialog(QWidget *parent, QMainWindow *window):
 
 {
     this->setFixedSize(400, 200);
-    setupUI();
-}
-
-void CustomDialog::setupUI() {
-
     comboBox->addItems({"Library", "Dark", "Light"});
     connect(comboBox, SIGNAL(currentIndexChanged(int)), this, SLOT(onComboBoxIndexChanged(int)));
     layout->addWidget(label);
@@ -24,11 +19,12 @@ void CustomDialog::setupUI() {
 
 void CustomDialog::onComboBoxIndexChanged(int index) {
     if (index == 0) {
-        window->close();
+        window->setStyleSheet("#centralwidget {background-image: url(\":/resources/backgrounds/library.jpg\");}");
     }
     else if (index == 1) {
-        qDebug() << "index1";
+        window->setStyleSheet("#centralwidget {background-image: url(\":/resources/backgrounds/dark.jpg\");}");
     } else if (index == 2) {
-        qDebug() << "index2";
+        window->setStyleSheet("#centralwidget {background-image: url(\":/resources/backgrounds/light.jpg\");}");
     }
+    this->close();
 }
