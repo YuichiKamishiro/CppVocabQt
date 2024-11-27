@@ -9,14 +9,15 @@
 #include <QRandomGenerator>
 #include <QFontDatabase>
 #include <QDialog>
+#include <QStandardPaths>
+#include <QDir>
 
 #include "CustomDialog.h"
 
-#define PATH_TO_SETTINGS "/home/yuichi/CppVocabQt/settings/settings.json"
-#define PATH_TO_DB0 "/home/yuichi/CppVocabQt/db/db0.csv"
-#define PATH_TO_DB1 "/home/yuichi/CppVocabQt/db/db1.csv"
-#define PATH_TO_DB2 "/home/yuichi/CppVocabQt/db/db2.csv"
-#define PATH_TO_LEARNED_DB "/home/yuichi/CppVocabQt/db/learnedDB.csv"
+#define PATH_TO_DB0 ":/resources/db/db0.csv"
+#define PATH_TO_DB1 ":/resources/db/db1.csv"
+#define PATH_TO_DB2 ":/resources/db/db2.csv"
+#define PATH_TO_LEARNED_DB ":/resources/db/learnedDB.csv"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -46,5 +47,6 @@ private:
     Ui::MainWindow *ui;
     CustomDialog *dialog;
     int indexDifficulty = 0;
+    QString settingsPath;
 };
 #endif // MAINWINDOW_H

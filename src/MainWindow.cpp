@@ -8,11 +8,14 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    settingsPath = "../settings/settings.json";
+
+
     // Reading setting.json to get difficulty level
-    QFile loadFile(PATH_TO_SETTINGS);
+    QFile loadFile(settingsPath);
     loadFile.open(QIODevice::ReadOnly);
     if (!loadFile.isOpen()) {
-        qWarning("Failed to open settings.json");
+        qWarning("Failed to open settings1.json");
         exit(EXIT_FAILURE);
     }
 
@@ -25,8 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     ui->comboBoxSettings->setCurrentIndex(indexDifficulty);
-
     QFontDatabase::addApplicationFont(":/resources/fonts/Rocklime.otf");
+
+    loadFile.close();
 }
 
 MainWindow::~MainWindow()
@@ -118,7 +122,7 @@ void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
     indexDifficulty = index;
 
     // Getting Json
-    QFile loadFile(PATH_TO_SETTINGS);
+    QFile loadFile(settingsPath);
     loadFile.open(QIODevice::ReadOnly);
     if (!loadFile.isOpen()) {
         qWarning("Failed to open settings.json");
@@ -126,6 +130,7 @@ void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
     }
 
     QByteArray loadData = loadFile.readAll();
+    loadFile.close();
     QJsonDocument loadDoc(QJsonDocument::fromJson(loadData));
     QJsonObject jsonObj = loadDoc.object();
 
@@ -134,8 +139,8 @@ void MainWindow::on_comboBoxSettings_currentIndexChanged(int index)
     }
 
     // Writing Json
-    QFile writeFile(PATH_TO_SETTINGS);
-    writeFile.open(QIODevice::WriteOnly);
+    QFile writeFile(settingsPath);
+    writeFile.open(QIODevice::ReadWrite | QIODevice::Truncate);
     if (!writeFile.isOpen()) {
         qWarning("Failed to open settings.json");
         exit(EXIT_FAILURE);

@@ -19,12 +19,12 @@ CustomDialog::CustomDialog(QWidget *parent, QMainWindow *window):
 
 void CustomDialog::onComboBoxIndexChanged(int index) {
     if (index == 0) {
-        window->setStyleSheet("#centralwidget {background-image: url(\":/resources/backgrounds/library.jpg\");}");
+        window->setStyleSheet("#centralwidget {border-image: url(\":/resources/backgrounds/library.jpg\");}");
     }
     else if (index == 1) {
-        window->setStyleSheet("#centralwidget {background-image: url(\":/resources/backgrounds/dark.jpg\");}");
+        window->setStyleSheet("#centralwidget {border-image: url(\":/resources/backgrounds/dark.jpg\");}");
     } else if (index == 2) {
-        window->setStyleSheet("#centralwidget {background-image: url(\":/resources/backgrounds/light.jpg\");}");
+        window->setStyleSheet("#centralwidget {border-image: url(\":/resources/backgrounds/light.jpg\");}");
     }
     this->close();
 }

@@ -4,5 +4,10 @@
         <file>backgrounds/dark.jpg</file>
         <file>backgrounds/library.jpg</file>
         <file>backgrounds/light.jpg</file>
+        <file>db/db0.csv</file>
+        <file>db/db1.csv</file>
+        <file>db/db2.csv</file>
+        <file>db/learnedDB.csv</file>
+        <file>settings/settings.json</file>
     </qresource>
 </RCC>
